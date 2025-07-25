@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <title>CMS</title>
+    <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
 </head>
 
 <body>
-    <script type="module">
-        import CMS from "https://esm.sh/@staticcms/app@3.4.8";
+    <script>
+        window.CMS_MANUAL_INIT = true;
 
-        CMS.init({
-            config: {
+        window.onload = function () {
+            if (typeof window.CMS === "undefined") {
+                console.error("CMS is not defined.");
+                return;
+            }
+
+            window.CMS.init({
                 backend: {
                     name: "github",
                     repo: "cinyuzhu/damic-notes",
                     branch: "main",
                     auth_type: "oauth",
-                    app_id: "Ov23libEVoBM9FREDJo9"  // Replace with real GitHub OAuth Client ID
+                    app_id: "Ov23libEVoBM9FREDJo9"
                 },
                 media_folder: "docs/uploads",
                 public_folder: "/uploads",
@@ -34,8 +40,8 @@
                         ]
                     }
                 ]
-            }
-        });
+            });
+        };
     </script>
 </body>
 
