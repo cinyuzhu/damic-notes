@@ -11,9 +11,42 @@
     <script>
         window.CMS_MANUAL_INIT = true;
     </script>
-    <script type="module">
-        import CMS from "https://unpkg.com/@staticcms/app@^3.0.0/dist/static-cms.js";
-        CMS.init();
+
+    <script>
+        // Wait for CMS to load from the script above
+        window.onload = function () {
+            if (typeof CMS === "undefined") {
+                console.error("CMS is not defined. Script may have failed to load.");
+                return;
+            }
+
+            CMS.init({
+                config: {
+                    backend: {
+                        name: "github",
+                        repo: "cinyuzhu/damic-notes",
+                        branch: "main",
+                        auth_type: "oauth",
+                        app_id: "Ov23libEVoBM9FREDJo9" // Replace this
+                    },
+                    media_folder: "docs/uploads",
+                    public_folder: "/uploads",
+                    collections: [
+                        {
+                            name: "notes",
+                            label: "Notes",
+                            folder: "docs",
+                            create: true,
+                            slug: "{{slug}}",
+                            fields: [
+                                { label: "Title", name: "title", widget: "string" },
+                                { label: "Body", name: "body", widget: "markdown" }
+                            ]
+                        }
+                    ]
+                }
+            });
+        };
     </script>
 </body>
 
