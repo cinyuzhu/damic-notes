@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: cinyuzhu/damic-notes
+  branch: main
+
+media_folder: "docs/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "notes"
+    label: "Notes"
+    folder: "docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
