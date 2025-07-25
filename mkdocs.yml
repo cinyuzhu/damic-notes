@@ -1,0 +1,17 @@
+site_name: Research Notes
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Experiments:
+      - Slow Control: experiments/slow_control.md
+  - Theory:
+      - Neutrinos: theory/neutrinos.md
+  - Private (🔒):
+      - Drafts: private/drafts.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
