@@ -1,48 +1,41 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Static CMS</title>
-    <script src="https://cdn.jsdelivr.net/npm/@staticcms/app@3.4.8/dist/static-cms.js"></script>
+    <meta charset="UTF-8" />
+    <title>CMS</title>
 </head>
 
 <body>
-    <script>
-        window.CMS_MANUAL_INIT = true;
-        window.onload = function () {
-            if (typeof window.CMS === "undefined") {
-                console.error("CMS is not defined. Script may have failed to load.");
-                return;
-            }
+    <script type="module">
+        import CMS from "https://esm.sh/@staticcms/app@3.4.8";
 
-            window.CMS.init({
-                config: {
-                    backend: {
-                        name: "github",
-                        repo: "cinyuzhu/damic-notes",
-                        branch: "main",
-                        auth_type: "oauth",
-                        app_id: "Ov23libEVoBM9FREDJo9" // replace with actual client ID
-                    },
-                    media_folder: "docs/uploads",
-                    public_folder: "/uploads",
-                    collections: [
-                        {
-                            name: "notes",
-                            label: "Notes",
-                            folder: "docs",
-                            create: true,
-                            slug: "{{slug}}",
-                            fields: [
-                                { label: "Title", name: "title", widget: "string" },
-                                { label: "Body", name: "body", widget: "markdown" }
-                            ]
-                        }
-                    ]
-                }
-            });
-        };
+        CMS.init({
+            config: {
+                backend: {
+                    name: "github",
+                    repo: "cinyuzhu/damic-notes",
+                    branch: "main",
+                    auth_type: "oauth",
+                    app_id: "Ov23libEVoBM9FREDJo9"  // Replace with real GitHub OAuth Client ID
+                },
+                media_folder: "docs/uploads",
+                public_folder: "/uploads",
+                collections: [
+                    {
+                        name: "notes",
+                        label: "Notes",
+                        folder: "docs",
+                        create: true,
+                        slug: "{{slug}}",
+                        fields: [
+                            { label: "Title", name: "title", widget: "string" },
+                            { label: "Body", name: "body", widget: "markdown" }
+                        ]
+                    }
+                ]
+            }
+        });
     </script>
 </body>
 
