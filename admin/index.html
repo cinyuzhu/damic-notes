@@ -3,31 +3,27 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>CMS</title>
-    <script src="https://unpkg.com/@staticcms/app@^3.0.0/dist/static-cms.js"></script>
+    <title>Static CMS</title>
+    <script src="https://cdn.jsdelivr.net/npm/@staticcms/app@3.4.8/dist/static-cms.js"></script>
 </head>
 
 <body>
     <script>
         window.CMS_MANUAL_INIT = true;
-    </script>
-
-    <script>
-        // Wait for CMS to load from the script above
         window.onload = function () {
-            if (typeof CMS === "undefined") {
+            if (typeof window.CMS === "undefined") {
                 console.error("CMS is not defined. Script may have failed to load.");
                 return;
             }
 
-            CMS.init({
+            window.CMS.init({
                 config: {
                     backend: {
                         name: "github",
                         repo: "cinyuzhu/damic-notes",
                         branch: "main",
                         auth_type: "oauth",
-                        app_id: "Ov23libEVoBM9FREDJo9" // Replace this
+                        app_id: "Ov23libEVoBM9FREDJo9" // replace with actual client ID
                     },
                     media_folder: "docs/uploads",
                     public_folder: "/uploads",
